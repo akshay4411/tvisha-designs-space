@@ -1,69 +1,115 @@
 import { motion } from "framer-motion";
-import profilePhoto from "@/assets/profile-photo.jpg";
+import tvishaPhoto from "@/assets/tvisha-photo.jpg";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section id="about" className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
+        {/* Section label */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-          className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center gap-4 mb-16"
         >
+          <span className="font-body text-xs tracking-[0.4em] uppercase text-primary">About</span>
+          <div className="flex-1 h-px bg-border" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-12 gap-12 lg:gap-20 items-start">
           {/* Image */}
-          <div className="flex justify-center md:justify-start">
-            <div className="relative">
-              <div className="absolute -inset-3 rounded-2xl bg-sage-light/50 -rotate-3" />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="md:col-span-5"
+          >
+            <div className="relative overflow-hidden">
               <img
-                src={profilePhoto}
+                src={tvishaPhoto}
                 alt="Tvisha Bhardwaj"
+                loading="lazy"
                 width={400}
                 height={400}
-                className="relative w-72 h-72 md:w-80 md:h-80 object-cover rounded-2xl shadow-lg"
+                className="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-700"
               />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-primary" />
             </div>
-          </div>
+          </motion.div>
 
           {/* Text */}
-          <div>
-            <p className="font-body text-sm tracking-[0.25em] uppercase text-primary mb-3">
-              About Me
-            </p>
-            <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground mb-6">
-              Where Creativity
+          <div className="md:col-span-7">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="font-heading text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase leading-[0.9] tracking-tight mb-8"
+            >
+              Where
               <br />
-              <span className="italic text-primary">Meets Structure</span>
-            </h2>
-            <div className="space-y-4 font-body text-muted-foreground leading-relaxed text-sm md:text-base">
+              Creativity
+              <br />
+              <span className="text-primary">Meets</span>
+              <br />
+              Structure
+            </motion.h2>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-5 font-body text-sm md:text-base text-muted-foreground leading-relaxed max-w-lg"
+            >
               <p>
                 I'm Tvisha Bhardwaj — an architecture student at{" "}
-                <span className="text-foreground font-medium">
+                <span className="text-foreground">
                   MBS School of Planning and Architecture
                 </span>
-                , West Delhi, driven by a deep curiosity for how spaces shape human experiences.
+                , West Delhi. Driven by curiosity for how spaces shape human experiences.
               </p>
               <p>
-                As a proud member of{" "}
-                <span className="text-foreground font-medium">NASA India</span>
-                , I've immersed myself in the broader architecture community,
-                participating in workshops, design competitions, and collaborative
-                learning experiences — including an enriching exposure at{" "}
-                <span className="text-foreground font-medium">
-                  CP Kukreja Architects
-                </span>
-                .
+                As a member of{" "}
+                <span className="text-foreground">NASA India</span>, I've immersed
+                myself in workshops, design competitions, and collaborative learning —
+                including exposure at{" "}
+                <span className="text-foreground">CP Kukreja Architects</span>.
               </p>
               <p>
-                My work is guided by a commitment to sustainable design, thoughtful
-                urban planning, and human-centered spaces. I believe architecture
-                isn't just about structures — it's about crafting environments that
-                nurture, inspire, and endure.
+                My work is guided by sustainable design, thoughtful urban planning, and
+                human-centered spaces. Architecture isn't just structures — it's
+                crafting environments that nurture, inspire, and endure.
               </p>
-            </div>
+            </motion.div>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+              className="flex gap-12 mt-10 pt-8 border-t border-border"
+            >
+              {[
+                { num: "04+", label: "Projects" },
+                { num: "02+", label: "Years" },
+                { num: "∞", label: "Passion" },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <p className="font-heading text-2xl md:text-3xl font-bold text-primary">
+                    {stat.num}
+                  </p>
+                  <p className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground mt-1">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
