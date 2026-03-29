@@ -1,23 +1,22 @@
 import { motion } from "framer-motion";
-import { GraduationCap, Users, Building } from "lucide-react";
 
 const timeline = [
   {
-    icon: GraduationCap,
+    num: "01",
     title: "MBS School of Planning and Architecture",
     role: "Architecture Student",
     period: "Current",
-    desc: "Pursuing a degree in architecture with a focus on sustainable design and urban planning in West Delhi.",
+    desc: "Pursuing architecture with focus on sustainable design and urban planning, West Delhi.",
   },
   {
-    icon: Users,
+    num: "02",
     title: "NASA India",
     role: "Active Member",
     period: "Current",
-    desc: "Engaging with India's architecture student community through workshops, competitions, and collaborative design events.",
+    desc: "Engaging with India's architecture student community through workshops, competitions, and design events.",
   },
   {
-    icon: Building,
+    num: "03",
     title: "CP Kukreja Architects",
     role: "Learning Exposure",
     period: "Experience",
@@ -27,67 +26,65 @@ const timeline = [
 
 const JourneySection = () => {
   return (
-    <section id="journey" className="py-24 px-6 bg-card/50">
-      <div className="max-w-4xl mx-auto">
+    <section id="journey" className="py-24 md:py-32 px-6 md:px-12 border-t border-border">
+      <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="flex items-center gap-4 mb-6"
         >
-          <p className="font-body text-sm tracking-[0.25em] uppercase text-primary mb-3">
-            Experience
-          </p>
-          <h2 className="font-heading text-3xl md:text-4xl font-medium text-foreground">
-            My <span className="italic text-primary">Journey</span>
-          </h2>
+          <span className="font-body text-xs tracking-[0.4em] uppercase text-primary">Experience</span>
+          <div className="flex-1 h-px bg-border" />
         </motion.div>
 
-        <div className="relative">
-          {/* Vertical line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px" />
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="font-heading text-5xl md:text-7xl font-extrabold uppercase leading-[0.85] tracking-tighter mb-16"
+        >
+          The
+          <br />
+          <span className="text-stroke">Journey</span>
+        </motion.h2>
 
-          <div className="space-y-12">
-            {timeline.map((item, i) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.15 }}
-                className={`relative flex flex-col md:flex-row items-start gap-6 ${
-                  i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Dot */}
-                <div className="absolute left-6 md:left-1/2 w-3 h-3 rounded-full bg-primary -translate-x-1.5 mt-6 z-10" />
-
-                {/* Content */}
-                <div className={`ml-14 md:ml-0 md:w-1/2 ${i % 2 === 0 ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                  <div className="bg-background rounded-xl p-6 border border-border shadow-sm">
-                    <div className={`flex items-center gap-3 mb-3 ${i % 2 === 0 ? "md:justify-end" : ""}`}>
-                      <div className="w-9 h-9 rounded-lg bg-accent flex items-center justify-center">
-                        <item.icon size={18} className="text-primary" />
-                      </div>
-                      <span className="font-body text-xs tracking-wider uppercase text-secondary">
-                        {item.period}
-                      </span>
-                    </div>
-                    <h3 className="font-heading text-lg font-medium text-foreground mb-1">
-                      {item.title}
-                    </h3>
-                    <p className="font-body text-sm font-medium text-primary mb-2">
-                      {item.role}
-                    </p>
-                    <p className="font-body text-sm text-muted-foreground leading-relaxed">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+        <div className="space-y-0">
+          {timeline.map((item, i) => (
+            <motion.div
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="group border-t border-border py-8 md:py-12 grid md:grid-cols-12 gap-4 md:gap-8 items-start hover:bg-card/50 transition-colors duration-300 px-2 -mx-2"
+            >
+              <span className="font-heading text-4xl md:text-5xl font-extrabold text-primary/20 group-hover:text-primary/40 transition-colors md:col-span-2">
+                {item.num}
+              </span>
+              <div className="md:col-span-4">
+                <h3 className="font-heading text-lg md:text-xl font-bold uppercase tracking-tight text-foreground">
+                  {item.title}
+                </h3>
+                <p className="font-body text-xs tracking-[0.2em] uppercase text-primary mt-1">
+                  {item.role}
+                </p>
+              </div>
+              <div className="md:col-span-4">
+                <p className="font-body text-sm text-muted-foreground leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+              <div className="md:col-span-2 md:text-right">
+                <span className="font-body text-xs tracking-[0.2em] uppercase text-muted-foreground">
+                  {item.period}
+                </span>
+              </div>
+            </motion.div>
+          ))}
+          <div className="border-t border-border" />
         </div>
       </div>
     </section>
